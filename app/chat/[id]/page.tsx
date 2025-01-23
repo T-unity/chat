@@ -29,7 +29,7 @@ export default async function ChatPage({ params }: ChatPageProps) {
     <div className="flex min-h-screen bg-background">
       <div className="flex flex-col flex-1">
         <main className="flex flex-col flex-1 bg-muted/50">
-          <div className="container flex flex-col max-w-3xl h-screen py-4">
+          <div className="container flex flex-col max-w-2xl mx-auto h-screen py-4">
             <ChatMessages initialMessages={chatRoom.messages} />
             <ChatInput chatRoomId={chatRoom.id} />
           </div>
@@ -38,4 +38,3 @@ export default async function ChatPage({ params }: ChatPageProps) {
     </div>
   )
 }
-

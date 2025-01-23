@@ -78,3 +78,18 @@ export async function sendMessage(chatRoomId: string, message: string) {
   return text
 }
 
+export async function getChatRooms() {
+  const chatRooms = await prisma.chatRoom.findMany({
+    include: {
+      messages: {
+        orderBy: {
+          createdAt: "asc",
+        },
+      },
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+  })
+  return chatRooms
+}
