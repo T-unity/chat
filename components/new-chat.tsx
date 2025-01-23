@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { useRouter } from "next/navigation"
-import { SendIcon } from "lucide-react"
+import { SendHorizontal } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Textarea } from "@/components/ui/textarea"
 import { createChatRoom } from "@/app/actions"
@@ -28,22 +28,23 @@ export function NewChat() {
   }
 
   return (
-    <form onSubmit={onSubmit} className="w-full max-w-xl">
-      <div className="flex flex-col space-y-4">
+    <form onSubmit={onSubmit} className="w-full max-w-2xl px-4">
+      <div className="relative">
         <Textarea
-          placeholder="Type your message..."
+          placeholder="メッセージを入力..."
           value={message}
           onChange={(e) => setMessage(e.target.value)}
-          className="min-h-[100px]"
+          className="min-h-[100px] w-full resize-none rounded-lg border bg-background px-4 py-3 shadow-sm focus:border-black focus:ring-black"
+          rows={8}
         />
-        <Button type="submit" disabled={isLoading} className="self-end">
-          {isLoading ? (
-            "Creating chat..."
-          ) : (
-            <>
-              Send <SendIcon className="ml-2 h-4 w-4" />
-            </>
-          )}
+        <Button
+          type="submit"
+          size="icon"
+          disabled={isLoading}
+          className="absolute right-2 bottom-2 h-8 w-8 rounded-lg bg-black text-white hover:bg-black/90"
+        >
+          <SendHorizontal className="h-4 w-4" />
+          <span className="sr-only">送信</span>
         </Button>
       </div>
     </form>
